@@ -15,11 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'index')->name('home');
 
-Route::prefix('admin')->middleware(['admin'])->group(function () {
-    Route::get('/','DashboardController@index')->name('admin.index');
-    Route::resource('banana', 'BananaController');
-});
-
 
 Route::resource('delivery', 'DeliveryController')->except(['show', 'destroy', 'edit', 'update']);
 Route::resource('rent-car', 'RentCarController')->except(['destroy', 'edit', 'update']);
+
+
+Route::prefix('admin')->middleware(['admin'])->group(function () {
+    Route::get('/', 'DashboardController@index')->name('admin.index');
+    Route::resource('banana', 'BananaController');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
