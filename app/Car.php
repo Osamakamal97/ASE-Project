@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Car extends Model
 {
-    protected $fillable =[
+    protected $fillable = [
         'name',
         'modal',
-
+        'chairs_number'
     ];
 }
